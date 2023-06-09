@@ -103,10 +103,13 @@ class OrdersService {
     if (month && year) {
       const ordersFiltered = orders.filter((item) => {
         const date = new Date(item.date);
-        return date.getMonth() === +month && date.getFullYear() === +year;
+        return date.getMonth() + 1 === +month && date.getFullYear() === +year;
       });
 
-      return filterOrders(ordersFiltered);
+      const final = filterOrders(ordersFiltered);
+
+      console.log('final', final);
+      return final;
     }
 
     return filterOrders(orders);

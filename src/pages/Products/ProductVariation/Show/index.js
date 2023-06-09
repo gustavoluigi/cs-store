@@ -40,6 +40,8 @@ function ShowProductVariation() {
 
   const { variation: product, ...restProduct } = useGetVariation(productId, (data) => setProductData(data));
 
+  console.log('productvariation');
+
   if (restProduct.isLoading || restColors.isLoading || restSizes.isLoading) {
     return <div>Aguarde...</div>;
   }

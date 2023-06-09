@@ -19,7 +19,7 @@ import { useGetCustomers } from '../../../hooks/useCustomer';
 import Datalist from '../../../components/Form/Datalist';
 import { useGetTransactions } from '../../../hooks/useTransactions';
 import { useDebounce } from '../../../hooks/useDebounce';
-import { useGetVariations } from '../../../hooks/useProducts';
+import { useGetVariations, useListProducts } from '../../../hooks/useProducts';
 import { unformatPrice } from '../../../utils/unformatPrice';
 import { useCreateOrder } from '../../../hooks/useOrders';
 import { formatDate } from '../../../utils/formatDate';
@@ -56,7 +56,7 @@ function CreateOrder() {
     error: errorProducts,
     isError: isErrorProducts,
     isLoading: isLoadingProducts,
-  } = useGetVariations(debounceSearch);
+  } = useListProducts(debounceSearch);
 
   const {
     customers,

@@ -95,9 +95,14 @@ class ProductsService {
       ),
       sizes(
         name
+      ),
+      products(
+        name
       )`,
       )
       .eq('product_id', productId);
+
+    console.log('variations', variations);
 
     if (error) throw error;
 
@@ -159,7 +164,9 @@ class ProductsService {
       brand_id: product.brand_id,
     };
 
-    const { data: productCreated, error: errorProduct } = await supabase.from('products').insert(newProduct);
+    const { data: productCreated, error: errorProduct } = await supabase
+      .from('products')
+      .insert(newProduct);
 
     if (errorProduct) throw errorProduct;
 
@@ -167,7 +174,9 @@ class ProductsService {
   }
 
   async createVariation(productVariation) {
-    const { data, error } = await supabase.from('product_variations').insert(productVariation);
+    const { data, error } = await supabase
+      .from('product_variations')
+      .insert(productVariation);
 
     if (error) throw error;
 
@@ -234,17 +243,26 @@ class ProductsService {
   async deleteProduct({ productId, variations }) {
     const variationsIds = variations.map((variation) => variation.id);
 
-    const { error: errorVariations } = await supabase.from('product_variations').delete().in('id', variationsIds);
+    const { error: errorVariations } = await supabase
+      .from('product_variations')
+      .delete()
+      .in('id', variationsIds);
 
     if (errorVariations) throw errorVariations;
 
-    const { error } = await supabase.from('products').delete().eq('id', productId);
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', productId);
 
     if (error) throw error;
   }
 
   async deleteVariation(variationId) {
-    const { data: variation, error } = await supabase.from('product_variations').delete().eq('id', variationId);
+    const { data: variation, error } = await supabase
+      .from('product_variations')
+      .delete()
+      .eq('id', variationId);
 
     if (error) throw error;
 

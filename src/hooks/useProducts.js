@@ -108,6 +108,22 @@ export const useDeleteProduct = () => {
   return { deleteProduct };
 };
 
+export const useListProducts = (debounceSearch) => {
+  const {
+    data: products,
+    error,
+    isError,
+    isLoading,
+  } = useQuery(['listVariations', { debounceSearch }], () => ProductsService.listVariations(debounceSearch));
+
+  return {
+    products,
+    error,
+    isError,
+    isLoading,
+  };
+};
+
 export const useGetVariations = (productId) => {
   const {
     data: variations,
@@ -115,8 +131,6 @@ export const useGetVariations = (productId) => {
     isError,
     isLoading,
   } = useQuery(['variations', { productId }], () => ProductsService.getVariations(productId));
-
-  console.log(variations);
 
   return {
     variations,

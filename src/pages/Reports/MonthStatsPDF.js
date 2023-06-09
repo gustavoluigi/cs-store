@@ -103,7 +103,7 @@ function MonthStatsPDF() {
     if (ordersFetch.isFetched) {
       const totalValue = +ordersFetch.orders.reduce((acc, obj) => acc + unformatPrice(obj.total), 0);
       const filteredOrdersList = ordersFetch.orders.map((i) => ({
-        date: formatDate(i.date),
+        date: i.date,
         qt_products: i.qt_products,
         subtotal: i.subtotal,
         discount: `${i.discount}%`,
@@ -119,7 +119,6 @@ function MonthStatsPDF() {
       setRenderPDF(true);
     }
   };
-
   useEffect(() => {
     loadStats();
   }, [ordersFetch.isFetched]);
