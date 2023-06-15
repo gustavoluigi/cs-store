@@ -11,7 +11,7 @@ import { useCreateBrand, useGetBrands } from '../../../hooks/useBrand';
 import { useCreateProduct } from '../../../hooks/useProducts';
 
 function CreateProduct() {
-  const { createProduct } = useCreateProduct();
+  const { createProduct: create } = useCreateProduct();
   const { createBrand } = useCreateBrand();
   const { data: brands, ...restBrands } = useGetBrands((res) => res.map((brand) => ({
     key: brand.id,
@@ -45,7 +45,8 @@ function CreateProduct() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createProduct(product);
+    console.log('submit product', product);
+    create(product);
   };
 
   return (

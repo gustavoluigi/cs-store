@@ -28,7 +28,5 @@ export const useGetColors = (select = null) => {
     select,
   });
 
-  console.log('response', response.data);
-
   return response;
 };

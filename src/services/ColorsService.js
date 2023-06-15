@@ -4,8 +4,6 @@ class ColorsService {
   async getColors() {
     const { data, error } = await supabase.from('colors').select('*');
 
-    console.log('getColors', data);
-
     if (error) throw error;
 
     return data;

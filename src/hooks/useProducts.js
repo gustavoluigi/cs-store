@@ -40,14 +40,14 @@ export const useGetProducts = (debounceSearch) => {
 };
 
 export const useCreateProduct = (fields) => {
-  const { navigate } = useNavigate();
+  const navigate = useNavigate();
   const { mutate } = useMutation({
     mutationFn: ProductsService.createProduct,
     mutationKey: 'createProduct',
   });
 
-  const createProduct = () => {
-    mutate(fields, {
+  const createProduct = (product) => {
+    mutate(product, {
       onSuccess: (data) => {
         triggerToast('success', 'Produto cadastrado com sucesso');
         setTimeout(() => {
@@ -204,14 +204,14 @@ export const useDeleteVariation = () => {
   return { deleteVariation };
 };
 
-export const useCreateVariation = (fields) => {
-  const { navigate } = useNavigate();
+export const useCreateVariation = () => {
+  const navigate = useNavigate();
   const { mutate } = useMutation({
     mutationFn: ProductsService.createVariation,
     mutationKey: 'createVariation',
   });
 
-  const createVariation = () => {
+  const createVariation = (fields) => {
     mutate(fields, {
       onSuccess: (data) => {
         triggerToast('success', 'Variação cadastrada com sucesso');

@@ -46,8 +46,6 @@ function CreateProductVariation() {
     label: color.name,
   })));
 
-  console.log(colors);
-
   const { product, ...restProduct } = useGetProduct(productId, (data) => setProductName(data.name));
 
   if (restColors.isLoading || restSizes.isLoading) {
@@ -68,6 +66,7 @@ function CreateProductVariation() {
       ref: productData.ref,
       sku: productData.sku,
     };
+    console.log(newVariation);
     createVariation(newVariation);
   };
 

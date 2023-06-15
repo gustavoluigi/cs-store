@@ -102,8 +102,6 @@ class ProductsService {
       )
       .eq('product_id', productId);
 
-    console.log('variations', variations);
-
     if (error) throw error;
 
     const formatedVariations = variations.map((variation) => ({

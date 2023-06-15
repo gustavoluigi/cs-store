@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import create from 'zustand';
+import { create } from 'zustand';
 import { useLocalStorage } from './useLocalStorage';
 import { supabase } from '../services/utils/supabaseClient';
 import { triggerToast } from '../utils/triggerToast';
