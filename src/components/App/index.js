@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from '../../assets/styles/global';
 import defaultTheme from '../../assets/styles/themes/default';
@@ -11,11 +11,11 @@ function App() {
 
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyles />
-      <HashRouter>
+      <BrowserRouter>
         <Suspense fallback={<h1>Carregando...</h1>}>
           <Router />
         </Suspense>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
 
   );
